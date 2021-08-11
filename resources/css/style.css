@@ -40,6 +40,10 @@ body {
 	margin-top: 10px;
 }
 
+.header img:hover {
+	cursor: pointer;
+}
+
 .mission {
 	height: 700px;
 	width: 1200px;
