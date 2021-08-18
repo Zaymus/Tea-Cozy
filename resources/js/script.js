@@ -1,23 +1,28 @@
-const locations = document.getElementById("header_locations");
-const featured = document.getElementById("header_featured");
-const mission = document.getElementById("header_mission");
-const logo = document.getElementById("logo");
+const links = document.querySelectorAll("div.header > h4");
 
-locations.onclick = () => {
-    location.href = "#locations";
-    window.scrollTo(window.scrollX, window.scrollY - 80);
-};
+for (const link of links) {
+    link.addEventListener("click", clickHandler);
+}
 
-featured.onclick = () => {
-    location.href = "#featured";
-    window.scrollTo(window.scrollX, window.scrollY - 80);
-};
+function clickHandler(e) {
+    e.preventDefault();
+    const id = this.getAttribute("id");
+    var offsetTop = 0;
+    if (id === "header_locations")
+    {
+        var offsetTop = document.getElementById("locations").offsetTop - 80;
+    }
+    else if (id === "header_featured")
+    {
+        var offsetTop = document.getElementById("featured").offsetTop - 80;
+    }
+    else if (id === "header_mission")
+    {
+        var offsetTop = document.getElementById("mission").offsetTop - 80;
+    }
 
-mission.onclick = () => {
-    location.href = "#mission";
-    window.scrollTo(window.scrollX, window.scrollY - 80);
-};
-
-logo.onclick = () => {
-    location.href = "#";
+    scroll({
+        top: offsetTop,
+        behavior: "smooth"
+    });
 }
